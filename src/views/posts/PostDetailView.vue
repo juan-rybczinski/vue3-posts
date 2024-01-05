@@ -31,8 +31,11 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { getPostById, deletePost } from '@/api/posts';
+import { deletePost, getPostById } from '@/api/posts';
 import { ref } from 'vue';
+import { useAlert } from '@/composable/alert';
+
+const { vAlert, vSuccess } = useAlert();
 
 const props = defineProps({
 	id: [String, Number],
@@ -77,8 +80,10 @@ const remove = async () => {
 		}
 		await deletePost(props.id);
 		router.push({ name: 'PostList' });
+		vSuccess('삭제가 완료되었습니다.');
 	} catch (error) {
 		console.error(error);
+		vAlert(error.message);
 	}
 };
 const goListPage = () => router.push({ name: 'PostList' });
