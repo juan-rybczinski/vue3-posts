@@ -5,7 +5,8 @@
 
 		<PostFilter
 			v-model:title="params.title_like"
-			v-model:limit="params._limit"
+			:limit="params._limit"
+			@update:limit="changeLimit"
 		/>
 
 		<hr class="my-4" />
@@ -14,8 +15,12 @@
 
 		<AppError v-else-if="error" :message="error.message" />
 
+		<template v-else-if="!isExist">
+			<p class="text-center py-4 text-muted">No Results!</p>
+		</template>
+
 		<template v-else>
-			<AppGrid :items="posts">
+			<AppGrid :items="posts" col-class="col-12 col-md-6 col-lg-4">
 				<template v-slot="{ item }">
 					<PostItem
 						:title="item.title"
@@ -70,7 +75,7 @@ const params = ref({
 	_sort: 'createdAt',
 	_order: 'desc',
 	_page: 1,
-	_limit: 3,
+	_limit: 6,
 	title_like: '',
 });
 
@@ -113,6 +118,13 @@ const selectPreview = id => {
 	previewId.value = id;
 	console.log(previewId.value);
 };
+
+const changeLimit = value => {
+	params.value._limit = value;
+	params.value._page = 1;
+};
+
+const isExist = computed(() => posts.value && posts.value.length > 0);
 </script>
 
 <style lang="scss" scoped></style>
