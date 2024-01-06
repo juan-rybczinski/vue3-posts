@@ -5,6 +5,8 @@ import App from './App.vue';
 import router from '@/router';
 import globalDirectives from './plugins/global-directives';
 import dayjs from './plugins/dayjs';
+import 'bootstrap/dist/js/bootstrap.js';
+import { createPinia } from 'pinia';
 // import focus from '@/directives/focus';
 // import globalComponents from '@/plugins/global-components';
 
@@ -14,8 +16,8 @@ const app = createApp(App);
 app.use(router);
 app.use(globalDirectives);
 app.use(dayjs);
+app.use(createPinia());
 app.mount('#app');
-import 'bootstrap/dist/js/bootstrap.js';
 
 // console.log('MODE: ', import.meta.env.MODE);
 // console.log('BASE_URL: ', import.meta.env.BASE_URL);
