@@ -18,13 +18,13 @@
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item">
 							<RouterLink class="nav-link" active-class="active" to="/"
-								>Home</RouterLink
-							>
+								>Home
+							</RouterLink>
 						</li>
 						<li class="nav-item">
 							<RouterLink class="nav-link" active-class="active" to="/about"
-								>About</RouterLink
-							>
+								>About
+							</RouterLink>
 						</li>
 						<li class="nav-item">
 							<RouterLink class="nav-link" active-class="active" to="/posts">
@@ -34,6 +34,11 @@
 						<li class="nav-item">
 							<RouterLink class="nav-link" active-class="active" to="/nested">
 								Nested
+							</RouterLink>
+						</li>
+						<li class="nav-item">
+							<RouterLink class="nav-link" active-class="active" to="/my">
+								My Page
 							</RouterLink>
 						</li>
 					</ul>
